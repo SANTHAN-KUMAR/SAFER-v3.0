@@ -1,0 +1,9 @@
+{
+  "d_input": 14,
+  "d_model": 128,
+  "d_state": 16,
+  "n_layers": 6,
+  "expand": 2,
+  "dropout": 0.1,
+  "max_rul": 125
+}

@@ -282,6 +282,8 @@ def evaluate_model(
     device: torch.device,
 ) -> dict:
     """Evaluate model on data loader."""
+    from safer_v3.utils.metrics import calculate_rul_metrics
+    
     model.eval()
     
     all_preds = []
@@ -298,10 +300,10 @@ def evaluate_model(
     y_pred = np.concatenate(all_preds).ravel()
     y_true = np.concatenate(all_targets).ravel()
     
-    # Compute metrics
-    metrics = RULMetrics.compute_all(y_true, y_pred)
+    # Compute metrics using the correct function
+    metrics = calculate_rul_metrics(y_true, y_pred)
     
-    return metrics
+    return metrics.to_dict()
 
 
 def train_ensemble(
