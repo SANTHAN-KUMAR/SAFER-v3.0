@@ -1,3 +1,65 @@
+Metadata-Version: 2.4
+Name: safer_v3
+Version: 3.0.0
+Summary: Scalable Aerospace Failure Estimation Runtime - Turbofan Engine Prognostics
+Home-page: https://github.com/your-org/safer-v3
+Author: SAFER Development Team
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: torch>=2.0.0
+Requires-Dist: numpy>=1.24.0
+Requires-Dist: pandas>=2.0.0
+Requires-Dist: scipy>=1.10.0
+Requires-Dist: scikit-learn>=1.2.0
+Requires-Dist: pyyaml>=6.0
+Requires-Dist: dataclasses-json>=0.5.0
+Requires-Dist: tqdm>=4.65.0
+Requires-Dist: matplotlib>=3.7.0
+Requires-Dist: seaborn>=0.12.0
+Requires-Dist: onnx>=1.14.0
+Requires-Dist: onnxruntime>=1.15.0
+Requires-Dist: pytest>=7.0.0
+Requires-Dist: pytest-cov>=4.0.0
+Requires-Dist: black>=23.0.0
+Requires-Dist: isort>=5.12.0
+Requires-Dist: mypy>=1.0.0
+Requires-Dist: flake8>=6.0.0
+Requires-Dist: sphinx>=6.0.0
+Requires-Dist: sphinx-rtd-theme>=1.2.0
+Requires-Dist: jupyter>=1.0.0
+Requires-Dist: ipykernel>=6.0.0
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0.0; extra == "dev"
+Requires-Dist: pytest-cov>=4.0.0; extra == "dev"
+Requires-Dist: black>=23.0.0; extra == "dev"
+Requires-Dist: isort>=5.12.0; extra == "dev"
+Requires-Dist: mypy>=1.0.0; extra == "dev"
+Requires-Dist: flake8>=6.0.0; extra == "dev"
+Provides-Extra: docs
+Requires-Dist: sphinx>=6.0.0; extra == "docs"
+Requires-Dist: sphinx-rtd-theme>=1.2.0; extra == "docs"
+Provides-Extra: viz
+Requires-Dist: matplotlib>=3.7.0; extra == "viz"
+Requires-Dist: seaborn>=0.12.0; extra == "viz"
+Dynamic: author
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: provides-extra
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
 # SAFER v3.0
 
 **Scalable Aerospace Failure Estimation Runtime**

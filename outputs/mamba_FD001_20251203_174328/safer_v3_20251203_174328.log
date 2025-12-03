@@ -1,0 +1,22 @@
+2025-12-03 17:43:28.618 | INFO     | safer_v3.core.trainer | Created CMAPSSDataset: 15731 samples, window_size=50, stride=1
+2025-12-03 17:43:28.688 | INFO     | safer_v3.core.trainer | Created CMAPSSDataset: 15731 samples, window_size=50, stride=1
+2025-12-03 17:43:28.745 | INFO     | safer_v3.core.trainer | Created CMAPSSDataset: 8255 samples, window_size=50, stride=1
+2025-12-03 17:43:28.746 | INFO     | safer_v3.core.trainer | Data setup complete: 12641 train, 3090 val, 8255 test samples
+2025-12-03 17:43:28.754 | INFO     | safer_v3.core.mamba  | Initialized MambaRULPredictor: d_input=14, d_model=128, d_state=16, n_layers=6, max_rul=125
+2025-12-03 17:43:29.274 | INFO     | safer_v3.core.trainer | Trainer initialized on cuda
+2025-12-03 17:43:29.343 | INFO     | safer_v3.core.trainer | Created CMAPSSDataset: 15731 samples, window_size=50, stride=1
+2025-12-03 17:43:29.408 | INFO     | safer_v3.core.trainer | Created CMAPSSDataset: 15731 samples, window_size=50, stride=1
+2025-12-03 17:43:29.460 | INFO     | safer_v3.core.trainer | Created CMAPSSDataset: 8255 samples, window_size=50, stride=1
+2025-12-03 17:43:29.460 | INFO     | safer_v3.core.trainer | Data setup complete: 12641 train, 3090 val, 8255 test samples
+2025-12-03 17:43:29.461 | INFO     | safer_v3.core.trainer | Starting training for 100 epochs
+2025-12-03 17:47:15.557 | INFO     | safer_v3.core.trainer | New best RMSE: 25.0326
+2025-12-03 17:47:15.557 | INFO     | safer_v3.core.trainer | Epoch 1/100 (226.1s) - Train Loss: 432.6891, RMSE: 60.02 - Val Loss: 151.4481, RMSE: 25.03 - LR: 9.76e-04
+2025-12-03 17:51:01.335 | INFO     | safer_v3.core.trainer | New best RMSE: 18.2132
+2025-12-03 17:51:01.335 | INFO     | safer_v3.core.trainer | Epoch 2/100 (225.8s) - Train Loss: 118.4397, RMSE: 21.49 - Val Loss: 86.9280, RMSE: 18.21 - LR: 9.05e-04
+2025-12-03 17:54:47.100 | INFO     | safer_v3.core.trainer | New best RMSE: 14.7022
+2025-12-03 17:54:47.109 | INFO     | safer_v3.core.trainer | Epoch 3/100 (225.8s) - Train Loss: 87.6378, RMSE: 17.82 - Val Loss: 64.8181, RMSE: 14.70 - LR: 7.94e-04
+2025-12-03 17:58:32.878 | INFO     | safer_v3.core.trainer | New best RMSE: 14.5796
+2025-12-03 17:58:32.879 | INFO     | safer_v3.core.trainer | Epoch 4/100 (225.8s) - Train Loss: 51.3289, RMSE: 12.23 - Val Loss: 61.9465, RMSE: 14.58 - LR: 6.55e-04
+2025-12-03 18:02:18.696 | INFO     | safer_v3.core.trainer | Epoch 5/100 (225.8s) - Train Loss: 38.3648, RMSE: 10.18 - Val Loss: 62.8065, RMSE: 14.61 - LR: 5.01e-04
+2025-12-03 18:06:04.503 | INFO     | safer_v3.core.trainer | New best RMSE: 14.2460
+2025-12-03 18:06:04.504 | INFO     | safer_v3.core.trainer | Epoch 6/100 (225.8s) - Train Loss: 29.1569, RMSE: 8.62 - Val Loss: 60.2330, RMSE: 14.25 - LR: 3.46e-04

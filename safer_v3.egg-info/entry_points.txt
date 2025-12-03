@@ -1,0 +1,3 @@
+[console_scripts]
+safer-train-baselines = safer_v3.scripts.train_baselines:main
+safer-train-mamba = safer_v3.scripts.train_mamba:main
