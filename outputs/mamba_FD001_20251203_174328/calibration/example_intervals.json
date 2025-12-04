@@ -1,0 +1,802 @@
+[
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 123.61359405517578,
+    "lower_bound": 85.06683406010058,
+    "upper_bound": 162.160354050251,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 125.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 124.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 123.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 122.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 121.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 120.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 119.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 118.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 117.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 116.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 115.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 114.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 113.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 112.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 111.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 110.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 109.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 108.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 107.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 106.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 105.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 104.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 103.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 102.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 101.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 100.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 99.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 98.0,
+    "predicted_rul": 121.64728546142578,
+    "lower_bound": 83.10052546635058,
+    "upper_bound": 160.194045456501,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 97.0,
+    "predicted_rul": 121.9561538696289,
+    "lower_bound": 83.4093938745537,
+    "upper_bound": 160.5029138647041,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 96.0,
+    "predicted_rul": 118.7668685913086,
+    "lower_bound": 80.22010859623339,
+    "upper_bound": 157.3136285863838,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 95.0,
+    "predicted_rul": 122.20549011230469,
+    "lower_bound": 83.65873011722948,
+    "upper_bound": 160.7522501073799,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 94.0,
+    "predicted_rul": 122.19091033935547,
+    "lower_bound": 83.64415034428026,
+    "upper_bound": 160.73767033443067,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 93.0,
+    "predicted_rul": 122.53707885742188,
+    "lower_bound": 83.99031886234667,
+    "upper_bound": 161.08383885249708,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 92.0,
+    "predicted_rul": 120.14200592041016,
+    "lower_bound": 81.59524592533495,
+    "upper_bound": 158.68876591548536,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 91.0,
+    "predicted_rul": 111.63225555419922,
+    "lower_bound": 73.08549555912401,
+    "upper_bound": 150.17901554927442,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 90.0,
+    "predicted_rul": 118.76716613769531,
+    "lower_bound": 80.2204061426201,
+    "upper_bound": 157.31392613277052,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 89.0,
+    "predicted_rul": 124.90235137939453,
+    "lower_bound": 86.35559138431933,
+    "upper_bound": 163.44911137446974,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 88.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 87.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": true
+  },
+  {
+    "true_rul": 86.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": false
+  },
+  {
+    "true_rul": 85.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": false
+  },
+  {
+    "true_rul": 84.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": false
+  },
+  {
+    "true_rul": 83.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": false
+  },
+  {
+    "true_rul": 82.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": false
+  },
+  {
+    "true_rul": 81.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": false
+  },
+  {
+    "true_rul": 80.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": false
+  },
+  {
+    "true_rul": 79.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": false
+  },
+  {
+    "true_rul": 78.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": false
+  },
+  {
+    "true_rul": 77.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": false
+  },
+  {
+    "true_rul": 76.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": false
+  },
+  {
+    "true_rul": 75.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": false
+  },
+  {
+    "true_rul": 74.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": false
+  },
+  {
+    "true_rul": 73.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": false
+  },
+  {
+    "true_rul": 72.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": false
+  },
+  {
+    "true_rul": 71.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": false
+  },
+  {
+    "true_rul": 70.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": false
+  },
+  {
+    "true_rul": 69.0,
+    "predicted_rul": 125.0,
+    "lower_bound": 86.4532400049248,
+    "upper_bound": 163.5467599950752,
+    "interval_width": 77.09351999015041,
+    "covered": false
+  },
+  {
+    "true_rul": 68.0,
+    "predicted_rul": 119.23519897460938,
+    "lower_bound": 80.68843897953417,
+    "upper_bound": 157.78195896968458,
+    "interval_width": 77.09351999015041,
+    "covered": false
+  },
+  {
+    "true_rul": 67.0,
+    "predicted_rul": 113.54927062988281,
+    "lower_bound": 75.0025106348076,
+    "upper_bound": 152.09603062495802,
+    "interval_width": 77.09351999015041,
+    "covered": false
+  },
+  {
+    "true_rul": 66.0,
+    "predicted_rul": 112.42578125,
+    "lower_bound": 73.8790212549248,
+    "upper_bound": 150.9725412450752,
+    "interval_width": 77.09351999015041,
+    "covered": false
+  },
+  {
+    "true_rul": 65.0,
+    "predicted_rul": 114.87356567382812,
+    "lower_bound": 76.32680567875292,
+    "upper_bound": 153.42032566890333,
+    "interval_width": 77.09351999015041,
+    "covered": false
+  },
+  {
+    "true_rul": 64.0,
+    "predicted_rul": 119.37109375,
+    "lower_bound": 80.8243337549248,
+    "upper_bound": 157.9178537450752,
+    "interval_width": 77.09351999015041,
+    "covered": false
+  },
+  {
+    "true_rul": 63.0,
+    "predicted_rul": 114.80632019042969,
+    "lower_bound": 76.25956019535448,
+    "upper_bound": 153.3530801855049,
+    "interval_width": 77.09351999015041,
+    "covered": false
+  }
+]
