@@ -599,7 +599,7 @@ class MambaRULPredictor(nn.Module):
         if device is None:
             device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         
-        checkpoint = torch.load(path, map_location=device)
+        checkpoint = torch.load(path, map_location=device, weights_only=False)
         
         # Create model with saved config
         config = checkpoint['config']

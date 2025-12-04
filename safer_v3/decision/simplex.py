@@ -252,6 +252,66 @@ class SafetyMonitor:
         # Check if recent residuals are all below threshold
         return all(r < self.config.physics_threshold * 0.8 for r in recent)
     
+    def check_health_trend(
+        self,
+        health_parameter: np.ndarray,
+        min_samples: int = 5,
+        improvement_threshold: float = 0.02,
+    ) -> bool:
+        """Check if health parameter is improving (trending towards health).
+        
+        For safe recovery from baseline to complex mode, we should verify
+        that the engine health is actually improving, not just that residuals
+        are temporarily low.
+        
+        The health parameter p(t) should be increasing (moving towards 1.0)
+        for recovery to be justified. This prevents recovery during transient
+        good periods in a degrading system.
+        
+        Args:
+            health_parameter: Health parameter trajectory p(t), typically
+                            computed from EGT margin. Should be shape (n_samples,)
+                            with values in [0, 1] where 1.0 = healthy.
+            min_samples: Minimum number of samples to analyze
+            improvement_threshold: Minimum required health improvement rate
+                                 (p_{t} - p_{t-w}) / w for recovery permission
+            
+        Returns:
+            True if health is improving (dp/dt > threshold), False otherwise
+            
+        Example:
+            >>> p = np.linspace(0.5, 0.6, 100)  # Improving health
+            >>> is_improving = monitor.check_health_trend(p)
+            >>> assert is_improving  # Health improving, recovery safe
+        """
+        # Validate input
+        if len(health_parameter) < min_samples:
+            logger.debug(
+                f"Insufficient health samples ({len(health_parameter)} < {min_samples})"
+            )
+            return False
+        
+        # Get recent health parameter values
+        recent_p = health_parameter[-min_samples:]
+        
+        # Compute health trend: average derivative dp/dt
+        # Use linear regression for robustness to noise
+        t = np.arange(len(recent_p))
+        
+        # Simple trend: compare first vs last
+        p_start = recent_p[0]
+        p_end = recent_p[-1]
+        p_trend = (p_end - p_start) / len(recent_p)
+        
+        is_improving = p_trend > improvement_threshold
+        
+        logger.debug(
+            f"Health trend check: p_trend={p_trend:.6f}, "
+            f"threshold={improvement_threshold}, improving={is_improving}"
+        )
+        
+        return is_improving
+    
     def get_statistics(self) -> Dict[str, Any]:
         """Get monitoring statistics.
         

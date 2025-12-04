@@ -1,0 +1,10 @@
+{
+  "physics_threshold": 0.15,
+  "divergence_threshold": 30.0,
+  "uncertainty_threshold": 100.0,
+  "recovery_window": 10,
+  "max_switch_rate": 2.0,
+  "hysteresis_cycles": 5,
+  "timeout_ms": 20.0,
+  "conservative_margin": 5.0
+}

@@ -1,0 +1,12 @@
+{
+  "total_alerts": 1,
+  "active_alerts": 1,
+  "alerts_by_level": {
+    "INFO": 0,
+    "ADVISORY": 1,
+    "CAUTION": 0,
+    "WARNING": 0,
+    "CRITICAL": 0
+  },
+  "unacknowledged": 1
+}

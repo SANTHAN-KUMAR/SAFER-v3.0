@@ -1,0 +1,34 @@
+{
+  "pipeline": "SAFER v3.0 Full Architecture",
+  "components": {
+    "mamba": true,
+    "lstm_baseline": true,
+    "physics_monitor": true,
+    "conformal": true,
+    "simplex": true,
+    "alerts": true
+  },
+  "metrics": {
+    "mamba_rmse": 20.396762071861925,
+    "mamba_mae": 12.490822260217977,
+    "baseline_rmse": 38.236863656350785,
+    "baseline_mae": 35.44380019926099,
+    "final_rmse": 39.68269037822017,
+    "final_mae": 35.4458631992153,
+    "coverage": 0.9117300902314633,
+    "avg_interval_width": 77.0935199901504
+  },
+  "simplex_stats": {
+    "COMPLEX": 1030,
+    "BASELINE": 9166,
+    "RECOVERY": 0
+  },
+  "alert_stats": {
+    "INFO": 0,
+    "ADVISORY": 1,
+    "CAUTION": 1,
+    "WARNING": 0,
+    "CRITICAL": 0
+  },
+  "n_samples": 10196
+}

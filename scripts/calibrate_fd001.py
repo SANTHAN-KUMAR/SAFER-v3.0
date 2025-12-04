@@ -42,7 +42,7 @@ def load_checkpoint(checkpoint_path: Path, args_path: Path = None) -> tuple:
         Tuple of (model, config, metadata)
     """
     logger.info(f"Loading checkpoint from {checkpoint_path}")
-    checkpoint = torch.load(checkpoint_path, map_location='cpu')
+    checkpoint = torch.load(checkpoint_path, map_location='cpu', weights_only=False)
     
     # Try to load model config from args.json first
     config = None

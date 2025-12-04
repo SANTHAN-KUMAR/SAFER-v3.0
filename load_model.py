@@ -84,7 +84,7 @@ if MODEL_PATH.exists():
     print(f"Loading Checkpoint: {MODEL_PATH}")
     print(f"{'='*80}")
     
-    checkpoint = torch.load(MODEL_PATH, map_location='cpu')
+    checkpoint = torch.load(MODEL_PATH, map_location='cpu', weights_only=False)
     
     print(f"Checkpoint keys: {list(checkpoint.keys())}")
     

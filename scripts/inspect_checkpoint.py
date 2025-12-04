@@ -3,7 +3,7 @@ import torch
 from pathlib import Path
 
 checkpoint_path = Path('/workspace/checkpoints/best_model.pt')
-checkpoint = torch.load(checkpoint_path, map_location='cpu')
+checkpoint = torch.load(checkpoint_path, map_location='cpu', weights_only=False)
 
 print("Checkpoint keys:", checkpoint.keys())
 print("\nModel config keys:")

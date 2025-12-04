@@ -1,0 +1,41 @@
+{
+  "report_date": "2025-12-04T07:23:56.185593",
+  "dataset": "FD001",
+  "model": "Mamba RUL Predictor",
+  "architecture": {
+    "layers": 6,
+    "model_dim": 128,
+    "state_dim": 16
+  },
+  "test_performance": {
+    "rmse": 18.146739959716797,
+    "mae": 12.023580551147461,
+    "nasa_score": 82479.6875,
+    "r2": 0.6647999584674835
+  },
+  "calibration": {
+    "target_coverage": 0.9,
+    "empirical_coverage": 0.9002865329512894,
+    "quantile": 38.54675999507521,
+    "average_interval_width": 77.0935199901504,
+    "calibration_samples": 3490
+  },
+  "simplex_decision": {
+    "total_decisions": 10196,
+    "test_rmse": 20.396760940551758,
+    "test_mae": 12.490821838378906,
+    "total_alerts": 1
+  },
+  "alerts": {
+    "total_alerts": 1,
+    "active_alerts": 1,
+    "unacknowledged": 1,
+    "alerts_by_level": {
+      "INFO": 0,
+      "ADVISORY": 1,
+      "CAUTION": 0,
+      "WARNING": 0,
+      "CRITICAL": 0
+    }
+  }
+}

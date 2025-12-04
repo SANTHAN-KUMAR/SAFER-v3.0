@@ -1,0 +1,40 @@
+{
+  "export_date": "2025-12-04T08:33:45.218743",
+  "source_checkpoint": "checkpoints/best_model.pt",
+  "onnx_file": "checkpoints/onnx_export/mamba_rul.onnx",
+  "opset_version": 14,
+  "config": {
+    "data_dir": "CMAPSSData",
+    "dataset": "FD001",
+    "window_size": 30,
+    "stride": 1,
+    "max_rul": 125,
+    "batch_size": 128,
+    "num_epochs": 100,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "scheduler_type": "cosine",
+    "warmup_epochs": 5,
+    "min_lr": 1e-06,
+    "patience": 15,
+    "min_delta": 0.1,
+    "checkpoint_dir": "checkpoints",
+    "save_every": 10,
+    "device": "cuda",
+    "num_workers": 4,
+    "pin_memory": true,
+    "use_amp": true,
+    "log_interval": 10,
+    "tensorboard_dir": null
+  },
+  "input_shape": [
+    1,
+    30,
+    14
+  ],
+  "output_shape": [
+    1,
+    1
+  ]
+}

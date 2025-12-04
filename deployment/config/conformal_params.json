@@ -1,0 +1,21 @@
+{
+  "coverage": 0.9,
+  "quantile": 38.54675999507521,
+  "lower_quantile": 38.54675999507521,
+  "upper_quantile": 38.54675999507521,
+  "symmetric": true,
+  "normalize_scores": false,
+  "calibration_samples": 3490,
+  "empirical_coverage": 0.9002865329512894,
+  "average_width": 77.0935199901504,
+  "point_metrics": {
+    "rmse": 21.688785552978516,
+    "mae": 15.289501190185547,
+    "nasa_score": 85326.28125,
+    "r2": 0.730175793170929
+  },
+  "metadata": {
+    "epoch": 20,
+    "best_val_rmse": 14.246040344238281
+  }
+}

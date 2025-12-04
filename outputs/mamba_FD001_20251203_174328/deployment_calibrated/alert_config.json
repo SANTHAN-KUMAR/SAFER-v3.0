@@ -1,0 +1,6 @@
+{
+  "critical_threshold": 10,
+  "warning_threshold": 25,
+  "caution_threshold": 50,
+  "advisory_threshold": 100
+}

@@ -1,0 +1,26 @@
+{
+  "model": "LPV-SINDy Physics Monitor (DAL C)",
+  "dataset": "FD001",
+  "config": {
+    "window_size": 5,
+    "dt": 1.0,
+    "polynomial_degree": 2,
+    "include_fourier": false,
+    "threshold": 0.1,
+    "alpha": 0.01,
+    "max_iter": 100,
+    "residual_threshold_sigma": 3.0
+  },
+  "fit_results": {
+    "n_features": 120,
+    "total_nonzero": 1675,
+    "sparsity": 0.0029761904761904656,
+    "train_rmse": 0.7886020466632037,
+    "train_mae": 0.5845876059359131
+  },
+  "validation": {
+    "mean_score": 2.8189109445608556,
+    "std_score": 0.37290641851885026,
+    "anomaly_rate": 0.289
+  }
+}

@@ -659,6 +659,140 @@ class ScheduledLibrary(FunctionLibrary):
         return self.feature_names_
 
 
+class LPVAugmentedLibrary(FunctionLibrary):
+    """Augmented library with health-dependent scheduling interaction terms.
+    
+    Generates both standard polynomial terms and p-weighted interaction terms,
+    where p(t) is a scheduling parameter representing system health.
+    
+    For a state x and health parameter p(t), generates:
+    - Standard: [1, x, x², x³, ...]
+    - Augmented: [p·x, p·x², p·x³, ...]
+    
+    This captures health-dependent dynamics where the system response
+    changes as it degrades. Used in LPV-SINDy for adaptive degradation
+    monitoring.
+    
+    Mathematical formulation:
+        Ξ_augmented = [1, x, x², ..., p·x, p·x², p·x³, ...]
+        
+    The health parameter p ∈ [0,1] represents:
+        p = 1.0: Healthy (start of life)
+        p = 0.0: End of life
+    
+    References:
+        - Hofmann et al., "Reactive SINDy" (2019)
+        - Goebel et al., "Prognostics and Health Management of Electronics" (2017)
+    """
+    
+    def __init__(
+        self,
+        degree: int = 2,
+        include_bias: bool = True,
+        include_interaction: bool = True,
+    ):
+        """Initialize augmented LPV library.
+        
+        Args:
+            degree: Maximum polynomial degree for state terms
+            include_bias: Include constant term (1)
+            include_interaction: Include cross-terms (xy, xyz, etc.)
+        """
+        super().__init__(include_bias)
+        self.degree = degree
+        self.include_interaction = include_interaction
+        self._base_library = PolynomialLibrary(
+            degree=degree,
+            include_bias=include_bias,
+            include_interaction=include_interaction,
+        )
+        self._base_powers = None
+        self._augmented_powers = None
+    
+    def fit(self, X: np.ndarray, feature_names: Optional[List[str]] = None) -> 'LPVAugmentedLibrary':
+        """Fit augmented library.
+        
+        Args:
+            X: Input state data, shape (n_samples, n_features)
+            feature_names: Optional input feature names
+            
+        Returns:
+            self
+        """
+        # Fit base polynomial library
+        self._base_library.fit(X, feature_names)
+        self.n_input_features_ = self._base_library.n_input_features_
+        
+        base_names = self._base_library.get_feature_names()
+        self._base_powers = self._base_library._powers.copy()
+        
+        # Generate augmented feature names (base + p-weighted)
+        self.feature_names_ = base_names.copy()
+        
+        # Add p-weighted terms (skip the bias term '1')
+        for name in base_names:
+            if name != '1':  # Skip constant term
+                self.feature_names_.append(f'p·{name}')
+        
+        self.n_output_features_ = len(self.feature_names_)
+        self._is_fitted = True
+        
+        logger.debug(
+            f"LPVAugmentedLibrary fitted: {len(base_names)} base features, "
+            f"{len(base_names)-1} augmented features, "
+            f"total {self.n_output_features_}"
+        )
+        
+        return self
+    
+    def transform(self, X: np.ndarray, p: Optional[np.ndarray] = None) -> np.ndarray:
+        """Transform data with augmented LPV features.
+        
+        Args:
+            X: Input state data, shape (n_samples, n_features)
+            p: Health scheduling parameter, shape (n_samples,) or scalar
+               If None, assumes p=1 (fully healthy)
+            
+        Returns:
+            Augmented features, shape (n_samples, n_output_features)
+        """
+        if not self._is_fitted:
+            raise ValueError("Library must be fitted before transform")
+        
+        n_samples = X.shape[0]
+        
+        # Handle scheduling parameter
+        if p is None:
+            p = np.ones(n_samples)
+        else:
+            p = np.asarray(p)
+            if p.ndim == 0:  # Scalar
+                p = np.full(n_samples, p)
+            if len(p) != n_samples:
+                raise ValueError(
+                    f"Scheduling parameter size {len(p)} doesn't match "
+                    f"data size {n_samples}"
+                )
+        
+        # Get base polynomial features
+        base_features = self._base_library.transform(X)  # (n_samples, n_base)
+        
+        # Create augmented features: [base_features | p * base_features_no_bias]
+        # Skip the bias term when multiplying by p
+        augmented_features = np.hstack([
+            base_features,
+            base_features[:, 1:] * p.reshape(-1, 1),  # Multiply by p, skip bias
+        ])
+        
+        return augmented_features
+    
+    def get_feature_names(self) -> List[str]:
+        """Get augmented feature names."""
+        if not self._is_fitted:
+            raise ValueError("Library must be fitted first")
+        return self.feature_names_
+
+
 def build_turbofan_library(
     n_sensors: int = 14,
     polynomial_degree: int = 2,

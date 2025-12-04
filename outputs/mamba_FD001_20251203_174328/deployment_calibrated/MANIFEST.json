@@ -1,0 +1,41 @@
+{
+  "package_name": "FD001_Mamba_RUL_Predictor",
+  "version": "3.0",
+  "created": "1764832585.053275",
+  "files": {
+    "model_checkpoint.pt": "Trained model weights",
+    "model_config.json": "Model architecture config",
+    "conformal_params.json": "Calibration parameters",
+    "simplex_config.json": "Safety module config",
+    "alert_config.json": "Alert thresholds",
+    "inference.py": "Inference helper module",
+    "EVALUATION_REPORT.txt": "Complete evaluation report",
+    "summary_statistics.json": "Metrics summary",
+    "DEPLOYMENT_README.md": "Deployment guide"
+  },
+  "requirements": {
+    "python": ">=3.9",
+    "pytorch": ">=2.0",
+    "numpy": ">=1.20"
+  },
+  "model_specs": {
+    "type": "Mamba RUL Predictor",
+    "layers": 6,
+    "model_dim": 128,
+    "state_dim": 16,
+    "input_features": 14,
+    "output": "RUL (cycles)"
+  },
+  "calibration": {
+    "coverage_target": 0.9,
+    "empirical_coverage": 0.9,
+    "quantile": 38.55,
+    "samples": 3490
+  },
+  "performance": {
+    "test_rmse": 18.15,
+    "test_mae": 12.02,
+    "nasa_score": 82479.69,
+    "r2": 0.6648
+  }
+}

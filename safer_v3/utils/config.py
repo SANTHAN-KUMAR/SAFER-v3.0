@@ -66,31 +66,43 @@ class LPVSINDyConfig:
     
     Attributes:
         n_features: Number of input features (sensors)
-        poly_degree: Polynomial degree for library
+        polynomial_degree: Polynomial degree for library (alias: poly_degree)
         include_interactions: Include interaction terms
         threshold: Sparsity threshold for STLSQ
         alpha: Regularization strength for Lasso
-        integration_window: Window size for integral formulation
-        residual_threshold: Threshold for fault detection
+        window_size: Window size for integral formulation (alias: integration_window)
+        dt: Time step between samples
+        residual_threshold_sigma: Number of sigma for anomaly threshold
+        max_iter: Maximum iterations for sparse regression
     """
     n_features: int = 14
-    poly_degree: int = 2
+    polynomial_degree: int = 2  # Renamed from poly_degree
     include_interactions: bool = True
     threshold: float = 0.1
     alpha: float = 0.01
-    integration_window: int = 5
-    residual_threshold: float = 0.5
+    window_size: int = 5  # Renamed from integration_window
+    dt: float = 1.0  # Added: time step
+    residual_threshold_sigma: float = 3.0  # Renamed from residual_threshold
     max_iter: int = 100
     
     # LPV scheduling parameter (normalized EGT margin)
     egtm_sensor_idx: int = 9  # Index of EGT margin sensor
     
+    # Aliases for backward compatibility
+    @property
+    def poly_degree(self) -> int:
+        return self.polynomial_degree
+    
+    @property
+    def integration_window(self) -> int:
+        return self.window_size
+    
     def validate(self) -> None:
         """Validate configuration parameters."""
         assert self.n_features > 0, "Number of features must be positive"
-        assert self.poly_degree >= 1, "Polynomial degree must be at least 1"
+        assert self.polynomial_degree >= 1, "Polynomial degree must be at least 1"
         assert self.threshold > 0, "Threshold must be positive"
-        assert self.integration_window >= 2, "Integration window must be at least 2"
+        assert self.window_size >= 2, "Window size must be at least 2"
 
 
 @dataclass

@@ -286,6 +286,67 @@ class LPVSINDyMonitor(nn.Module):
             f"threshold={self.config.threshold}"
         )
     
+    def compute_scheduling_parameter(
+        self,
+        X: np.ndarray,
+        egtm_sensor_idx: Optional[int] = None,
+        nominal_egtm: float = 100.0,
+        min_egtm: float = 0.0,
+    ) -> np.ndarray:
+        """Auto-compute scheduling parameter p(t) from sensor data.
+        
+        The scheduling parameter represents the normalized health state,
+        computed from EGT Margin (EGTM) sensor. As engines degrade,
+        EGTM decreases. We normalize this to get p(t) ∈ [0, 1]:
+        
+            p(t) = (EGTM(t) - min_EGTM) / (nominal_EGTM - min_EGTM)
+        
+        where:
+        - p(t) = 1.0 represents healthy operation (max EGTM)
+        - p(t) = 0.0 represents end-of-life (min EGTM)
+        
+        Args:
+            X: State trajectory, shape (n_samples, n_sensors)
+            egtm_sensor_idx: Index of EGTM sensor (default: config.egtm_sensor_idx)
+            nominal_egtm: EGTM value at beginning of life
+            min_egtm: EGTM value at end of life
+            
+        Returns:
+            Scheduling parameter trajectory, shape (n_samples,)
+            
+        Example:
+            >>> X = np.random.randn(1000, 14)  # 1000 samples, 14 sensors
+            >>> p = monitor.compute_scheduling_parameter(X)
+            >>> assert p.shape == (1000,)
+            >>> assert np.all((p >= 0) & (p <= 1))
+        """
+        if egtm_sensor_idx is None:
+            egtm_sensor_idx = self.config.egtm_sensor_idx
+        
+        # Validate index
+        assert 0 <= egtm_sensor_idx < X.shape[1], \
+            f"EGTM sensor index {egtm_sensor_idx} out of range [0, {X.shape[1]-1}]"
+        
+        # Extract EGTM trajectory
+        egtm = X[:, egtm_sensor_idx].copy()
+        
+        # Normalize to [0, 1] range
+        # Note: EGTM decreases during degradation
+        egtm_range = nominal_egtm - min_egtm
+        p = np.clip(
+            (egtm - min_egtm) / egtm_range,
+            0.0,
+            1.0
+        )
+        
+        logger.debug(
+            f"Computed scheduling parameter: "
+            f"min={p.min():.4f}, max={p.max():.4f}, "
+            f"mean={p.mean():.4f}, std={p.std():.4f}"
+        )
+        
+        return p
+    
     def fit(
         self,
         X: np.ndarray,
@@ -378,6 +439,109 @@ class LPVSINDyMonitor(nn.Module):
         )
         
         return results
+    
+    def fit_lpv_decomposition(
+        self,
+        p: np.ndarray,
+        regularization: float = 1e-3,
+    ) -> Dict[str, Any]:
+        """Decompose coefficients into health-independent and health-dependent parts.
+        
+        For LPV systems, the coefficients can be decomposed as:
+            Ξ(p) = Ξ₀ + p·Ξ₁
+        
+        where:
+        - Ξ₀: Coefficients independent of health (baseline dynamics)
+        - Ξ₁: Health-dependent corrections (degradation effects)
+        - p: Scheduling parameter ∈ [0,1] representing health
+        
+        This decomposition enables:
+        1. Interpretability: Separate baseline from degradation effects
+        2. Generalization: p-varying coefficients capture health evolution
+        3. Prediction: Extrapolate dynamics for different health states
+        
+        Args:
+            p: Scheduling parameter trajectory, shape (n_samples,)
+               Typically computed from EGT margin or similar health indicator
+            regularization: L2 regularization for numerical stability
+            
+        Returns:
+            Dictionary with decomposition results:
+            - 'coefficients_0': Baseline coefficients Ξ₀
+            - 'coefficients_1': Degradation coefficients Ξ₁
+            - 'decomposition_rmse': Fit error of the decomposition
+            - 'explained_variance': R² score of decomposition
+            
+        Example:
+            >>> monitor = LPVSINDyMonitor()
+            >>> monitor.fit(X_train)
+            >>> p = monitor.compute_scheduling_parameter(X_train)
+            >>> decomp = monitor.fit_lpv_decomposition(p)
+            >>> print(f"Degradation sensitivity: {np.linalg.norm(decomp['coefficients_1'])}")
+        """
+        if not self._is_fitted:
+            raise ValueError("Model must be fitted before decomposition")
+        
+        if len(p) != self._coefficients.shape[0]:
+            raise ValueError(
+                f"Scheduling parameter length {len(p)} doesn't match "
+                f"coefficient matrix rows {self._coefficients.shape[0]}"
+            )
+        
+        # Objective: min ||Ξ(p) - (Ξ₀ + p·Ξ₁)||²_F + λ(||Ξ₀||²_F + ||Ξ₁||²_F)
+        # This is a least-squares problem: reshape and solve
+        
+        n_features, n_coeffs = self._coefficients.shape
+        
+        # Build design matrix: [1  p ]
+        #                       [1  p ]
+        #                       [... ]
+        A = np.column_stack([np.ones_like(p), p])  # (n_features, 2)
+        
+        # Solve for each coefficient dimension
+        # b = A^T @ A + λI,  solve: b @ x = A^T @ Ξ
+        ATA = A.T @ A  # (2, 2)
+        
+        # Add regularization to diagonal
+        ATA_reg = ATA + regularization * np.eye(2)
+        
+        # Solve: x = (A^T A + λI)^{-1} A^T Ξ
+        ATY = A.T @ self._coefficients  # (2, n_coeffs)
+        
+        try:
+            x = np.linalg.solve(ATA_reg, ATY)  # (2, n_coeffs)
+        except np.linalg.LinAlgError as e:
+            logger.warning(f"Decomposition solve failed: {e}, using least squares")
+            x = np.linalg.lstsq(ATA_reg, ATY, rcond=None)[0]
+        
+        Xi_0 = x[0, :].reshape(n_features, 1)  # Baseline: (n_features, 1)
+        Xi_1 = x[1, :].reshape(n_features, 1)  # Degradation: (n_features, 1)
+        
+        # Reconstruct and compute fit quality
+        Xi_decomposed = Xi_0 + p.reshape(-1, 1) * Xi_1  # (n_features, 2)
+        
+        decomp_error = self._coefficients - Xi_decomposed.T
+        decomp_rmse = np.sqrt(np.mean(decomp_error ** 2))
+        
+        # Explained variance (R²)
+        ss_res = np.sum(decomp_error ** 2)
+        ss_tot = np.sum((self._coefficients - np.mean(self._coefficients)) ** 2)
+        r2_score = 1.0 - (ss_res / (ss_tot + 1e-10))
+        
+        logger.info(
+            f"LPV decomposition complete: "
+            f"||Ξ₀||={np.linalg.norm(Xi_0):.4f}, "
+            f"||Ξ₁||={np.linalg.norm(Xi_1):.4f}, "
+            f"RMSE={decomp_rmse:.6f}, R²={r2_score:.4f}"
+        )
+        
+        return {
+            'coefficients_0': Xi_0,  # Baseline (health-independent)
+            'coefficients_1': Xi_1,  # Degradation (health-dependent)
+            'decomposition_rmse': decomp_rmse,
+            'explained_variance': r2_score,
+            'regularization': regularization,
+        }
     
     def _compute_residuals(self, X: np.ndarray) -> np.ndarray:
         """Compute prediction residuals.

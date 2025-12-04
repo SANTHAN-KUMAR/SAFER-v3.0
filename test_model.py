@@ -38,7 +38,7 @@ if not Path(CHECKPOINT_PATH).exists():
     print(f"❌ Checkpoint not found: {CHECKPOINT_PATH}")
     exit(1)
 
-checkpoint = torch.load(CHECKPOINT_PATH, map_location=DEVICE)
+checkpoint = torch.load(CHECKPOINT_PATH, map_location=DEVICE, weights_only=False)
 print(f"Checkpoint keys: {list(checkpoint.keys())}")
 
 # Extract config from checkpoint
