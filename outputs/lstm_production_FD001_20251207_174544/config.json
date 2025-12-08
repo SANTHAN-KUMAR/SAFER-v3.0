@@ -1,0 +1,21 @@
+{
+  "data_dir": "CMAPSSData",
+  "dataset": "FD001",
+  "d_model": 64,
+  "n_layers": 2,
+  "dropout": 0.5,
+  "bidirectional": true,
+  "epochs": 200,
+  "batch_size": 64,
+  "learning_rate": 0.0005,
+  "weight_decay": 0.001,
+  "patience": 50,
+  "grad_clip": 1.0,
+  "noise_std": 0.1,
+  "window_size": 50,
+  "max_rul": 125,
+  "output_dir": "outputs",
+  "seed": 42,
+  "timestamp": "20251207_174544",
+  "device": "cuda"
+}

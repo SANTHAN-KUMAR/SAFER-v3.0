@@ -34,3 +34,13 @@ safer_v3/utils/__init__.py
 safer_v3/utils/config.py
 safer_v3/utils/logging_config.py
 safer_v3/utils/metrics.py
+tests/test_alerts.py
+tests/test_baselines.py
+tests/test_conformal.py
+tests/test_integral_sindy.py
+tests/test_library.py
+tests/test_lpv_sindy.py
+tests/test_mamba.py
+tests/test_metrics.py
+tests/test_simplex.py
+tests/test_sparse_regression.py
