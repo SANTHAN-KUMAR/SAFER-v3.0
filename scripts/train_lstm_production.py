@@ -68,7 +68,7 @@ def parse_args():
                         help='Initial learning rate (default: 5e-4)')
     parser.add_argument('--weight_decay', type=float, default=1e-3,
                         help='Weight decay (default: 1e-3)')
-    parser.add_argument('--patience', type=int, default=50,
+    parser.add_argument('--patience', type=int, default=100,
                         help='Early stopping patience (default: 50)')
     parser.add_argument('--grad_clip', type=float, default=1.0,
                         help='Gradient clipping value (default: 1.0)')
