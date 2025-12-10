@@ -1,0 +1,66 @@
+2025-12-10 16:45:11.212 | INFO     | safer_v3.core.trainer | Created CMAPSSDataset: 15731 samples, window_size=50, stride=1
+2025-12-10 16:45:11.298 | INFO     | safer_v3.core.trainer | Created CMAPSSDataset: 15731 samples, window_size=50, stride=1
+2025-12-10 16:45:11.369 | INFO     | safer_v3.core.trainer | Created CMAPSSDataset: 8255 samples, window_size=50, stride=1
+2025-12-10 16:45:11.369 | INFO     | safer_v3.core.trainer | Data setup complete: 12641 train, 3090 val, 8255 test samples
+2025-12-10 16:45:11.377 | INFO     | safer_v3.core.mamba  | Initialized MambaRULPredictor: d_input=14, d_model=64, d_state=16, n_layers=4, max_rul=125
+2025-12-10 16:45:12.104 | INFO     | safer_v3.core.trainer | Trainer initialized on cuda
+2025-12-10 16:45:12.190 | INFO     | safer_v3.core.trainer | Created CMAPSSDataset: 15731 samples, window_size=50, stride=1
+2025-12-10 16:45:12.277 | INFO     | safer_v3.core.trainer | Created CMAPSSDataset: 15731 samples, window_size=50, stride=1
+2025-12-10 16:45:12.347 | INFO     | safer_v3.core.trainer | Created CMAPSSDataset: 8255 samples, window_size=50, stride=1
+2025-12-10 16:45:12.348 | INFO     | safer_v3.core.trainer | Data setup complete: 12641 train, 3090 val, 8255 test samples
+2025-12-10 16:45:12.348 | INFO     | safer_v3.core.trainer | Starting training for 100 epochs
+2025-12-10 16:46:28.427 | INFO     | safer_v3.core.trainer | New best RMSE: 74.5860
+2025-12-10 16:46:28.427 | INFO     | safer_v3.core.trainer | Epoch 1/100 (76.1s) - Train Loss: 666.5530, RMSE: 82.43 - Val Loss: 549.4635, RMSE: 74.59 - LR: 4.88e-04
+2025-12-10 16:47:44.068 | INFO     | safer_v3.core.trainer | New best RMSE: 35.4726
+2025-12-10 16:47:44.069 | INFO     | safer_v3.core.trainer | Epoch 2/100 (75.6s) - Train Loss: 465.9260, RMSE: 62.11 - Val Loss: 248.8789, RMSE: 35.47 - LR: 4.52e-04
+2025-12-10 16:48:59.701 | INFO     | safer_v3.core.trainer | New best RMSE: 25.3781
+2025-12-10 16:48:59.701 | INFO     | safer_v3.core.trainer | Epoch 3/100 (75.6s) - Train Loss: 191.5665, RMSE: 30.40 - Val Loss: 132.3542, RMSE: 25.38 - LR: 3.97e-04
+2025-12-10 16:50:15.346 | INFO     | safer_v3.core.trainer | New best RMSE: 23.5806
+2025-12-10 16:50:15.347 | INFO     | safer_v3.core.trainer | Epoch 4/100 (75.6s) - Train Loss: 144.7589, RMSE: 25.66 - Val Loss: 123.0068, RMSE: 23.58 - LR: 3.28e-04
+2025-12-10 16:51:30.988 | INFO     | safer_v3.core.trainer | New best RMSE: 22.8042
+2025-12-10 16:51:30.988 | INFO     | safer_v3.core.trainer | Epoch 5/100 (75.6s) - Train Loss: 133.4306, RMSE: 24.49 - Val Loss: 114.7223, RMSE: 22.80 - LR: 2.51e-04
+2025-12-10 16:52:46.631 | INFO     | safer_v3.core.trainer | New best RMSE: 22.1948
+2025-12-10 16:52:46.632 | INFO     | safer_v3.core.trainer | Epoch 6/100 (75.6s) - Train Loss: 128.7808, RMSE: 24.08 - Val Loss: 115.5934, RMSE: 22.19 - LR: 1.73e-04
+2025-12-10 16:54:02.285 | INFO     | safer_v3.core.trainer | New best RMSE: 22.0577
+2025-12-10 16:54:02.285 | INFO     | safer_v3.core.trainer | Epoch 7/100 (75.7s) - Train Loss: 124.9560, RMSE: 23.58 - Val Loss: 115.4139, RMSE: 22.06 - LR: 1.04e-04
+2025-12-10 16:55:17.914 | INFO     | safer_v3.core.trainer | New best RMSE: 21.5665
+2025-12-10 16:55:17.915 | INFO     | safer_v3.core.trainer | Epoch 8/100 (75.6s) - Train Loss: 120.1086, RMSE: 23.03 - Val Loss: 109.1831, RMSE: 21.57 - LR: 4.87e-05
+2025-12-10 16:56:33.579 | INFO     | safer_v3.core.trainer | Epoch 9/100 (75.7s) - Train Loss: 118.9320, RMSE: 22.87 - Val Loss: 111.6971, RMSE: 21.65 - LR: 1.32e-05
+2025-12-10 16:57:49.211 | INFO     | safer_v3.core.trainer | Epoch 10/100 (75.6s) - Train Loss: 119.9778, RMSE: 23.01 - Val Loss: 112.5646, RMSE: 21.70 - LR: 5.00e-04
+2025-12-10 16:59:04.863 | INFO     | safer_v3.core.trainer | New best RMSE: 21.3068
+2025-12-10 16:59:04.864 | INFO     | safer_v3.core.trainer | Epoch 11/100 (75.6s) - Train Loss: 117.5396, RMSE: 22.67 - Val Loss: 110.1309, RMSE: 21.31 - LR: 4.97e-04
+2025-12-10 17:00:20.521 | INFO     | safer_v3.core.trainer | Epoch 12/100 (75.7s) - Train Loss: 109.5370, RMSE: 21.63 - Val Loss: 126.3427, RMSE: 22.09 - LR: 4.88e-04
+2025-12-10 17:01:36.177 | INFO     | safer_v3.core.trainer | New best RMSE: 20.4224
+2025-12-10 17:01:36.177 | INFO     | safer_v3.core.trainer | Epoch 13/100 (75.7s) - Train Loss: 106.6980, RMSE: 21.14 - Val Loss: 110.5702, RMSE: 20.42 - LR: 4.73e-04
+2025-12-10 17:02:51.825 | INFO     | safer_v3.core.trainer | New best RMSE: 19.6605
+2025-12-10 17:02:51.826 | INFO     | safer_v3.core.trainer | Epoch 14/100 (75.6s) - Train Loss: 102.4397, RMSE: 20.68 - Val Loss: 105.2622, RMSE: 19.66 - LR: 4.52e-04
+2025-12-10 17:04:07.469 | INFO     | safer_v3.core.trainer | New best RMSE: 18.1325
+2025-12-10 17:04:07.470 | INFO     | safer_v3.core.trainer | Epoch 15/100 (75.6s) - Train Loss: 97.8338, RMSE: 19.86 - Val Loss: 92.1056, RMSE: 18.13 - LR: 4.27e-04
+2025-12-10 17:05:23.111 | INFO     | safer_v3.core.trainer | Epoch 16/100 (75.6s) - Train Loss: 95.0751, RMSE: 19.26 - Val Loss: 109.4809, RMSE: 20.36 - LR: 3.97e-04
+2025-12-10 17:06:38.763 | INFO     | safer_v3.core.trainer | Epoch 17/100 (75.7s) - Train Loss: 88.7930, RMSE: 18.32 - Val Loss: 98.1672, RMSE: 19.23 - LR: 3.64e-04
+2025-12-10 17:07:54.414 | INFO     | safer_v3.core.trainer | Epoch 18/100 (75.7s) - Train Loss: 86.4982, RMSE: 18.00 - Val Loss: 118.3226, RMSE: 21.03 - LR: 3.28e-04
+2025-12-10 17:09:10.045 | INFO     | safer_v3.core.trainer | Epoch 19/100 (75.6s) - Train Loss: 81.6287, RMSE: 17.26 - Val Loss: 108.8268, RMSE: 20.31 - LR: 2.90e-04
+2025-12-10 17:10:25.682 | INFO     | safer_v3.core.trainer | Epoch 20/100 (75.6s) - Train Loss: 77.6465, RMSE: 16.59 - Val Loss: 104.3363, RMSE: 20.18 - LR: 2.51e-04
+2025-12-10 17:11:41.376 | INFO     | safer_v3.core.trainer | Epoch 21/100 (75.7s) - Train Loss: 74.4743, RMSE: 16.05 - Val Loss: 143.3176, RMSE: 25.50 - LR: 2.11e-04
+2025-12-10 17:12:57.039 | INFO     | safer_v3.core.trainer | Epoch 22/100 (75.7s) - Train Loss: 71.3943, RMSE: 15.57 - Val Loss: 135.6357, RMSE: 25.18 - LR: 1.73e-04
+2025-12-10 17:14:12.667 | INFO     | safer_v3.core.trainer | Epoch 23/100 (75.6s) - Train Loss: 70.8835, RMSE: 15.43 - Val Loss: 128.7468, RMSE: 24.44 - LR: 1.37e-04
+2025-12-10 17:15:28.316 | INFO     | safer_v3.core.trainer | Epoch 24/100 (75.6s) - Train Loss: 66.7657, RMSE: 14.84 - Val Loss: 128.7861, RMSE: 23.88 - LR: 1.04e-04
+2025-12-10 17:16:43.976 | INFO     | safer_v3.core.trainer | Epoch 25/100 (75.7s) - Train Loss: 66.6658, RMSE: 14.74 - Val Loss: 133.0985, RMSE: 24.62 - LR: 7.41e-05
+2025-12-10 17:17:59.611 | INFO     | safer_v3.core.trainer | Epoch 26/100 (75.6s) - Train Loss: 65.7738, RMSE: 14.59 - Val Loss: 110.3864, RMSE: 21.31 - LR: 4.87e-05
+2025-12-10 17:19:15.240 | INFO     | safer_v3.core.trainer | Epoch 27/100 (75.6s) - Train Loss: 64.7249, RMSE: 14.40 - Val Loss: 127.8783, RMSE: 23.90 - LR: 2.82e-05
+2025-12-10 17:20:30.882 | INFO     | safer_v3.core.trainer | Epoch 28/100 (75.6s) - Train Loss: 64.8402, RMSE: 14.48 - Val Loss: 122.3266, RMSE: 23.25 - LR: 1.32e-05
+2025-12-10 17:21:46.520 | INFO     | safer_v3.core.trainer | Epoch 29/100 (75.6s) - Train Loss: 64.1839, RMSE: 14.40 - Val Loss: 128.9333, RMSE: 23.98 - LR: 4.07e-06
+2025-12-10 17:23:02.151 | INFO     | safer_v3.core.trainer | Epoch 30/100 (75.6s) - Train Loss: 64.6050, RMSE: 14.49 - Val Loss: 127.7072, RMSE: 23.86 - LR: 5.00e-04
+2025-12-10 17:24:17.796 | INFO     | safer_v3.core.trainer | Epoch 31/100 (75.6s) - Train Loss: 65.6624, RMSE: 14.61 - Val Loss: 140.0236, RMSE: 25.83 - LR: 4.99e-04
+2025-12-10 17:25:33.439 | INFO     | safer_v3.core.trainer | Epoch 32/100 (75.6s) - Train Loss: 65.0117, RMSE: 14.54 - Val Loss: 124.7765, RMSE: 22.27 - LR: 4.97e-04
+2025-12-10 17:26:49.087 | INFO     | safer_v3.core.trainer | Epoch 33/100 (75.6s) - Train Loss: 62.4512, RMSE: 14.06 - Val Loss: 130.3603, RMSE: 24.14 - LR: 4.93e-04
+2025-12-10 17:28:04.740 | INFO     | safer_v3.core.trainer | Epoch 34/100 (75.7s) - Train Loss: 58.8075, RMSE: 13.53 - Val Loss: 116.6859, RMSE: 21.98 - LR: 4.88e-04
+2025-12-10 17:29:20.393 | INFO     | safer_v3.core.trainer | Epoch 35/100 (75.7s) - Train Loss: 57.7127, RMSE: 13.31 - Val Loss: 107.7278, RMSE: 22.13 - LR: 4.81e-04
+2025-12-10 17:30:36.049 | INFO     | safer_v3.core.trainer | Epoch 36/100 (75.7s) - Train Loss: 55.1233, RMSE: 12.86 - Val Loss: 128.5534, RMSE: 24.17 - LR: 4.73e-04
+2025-12-10 17:31:51.687 | INFO     | safer_v3.core.trainer | Epoch 37/100 (75.6s) - Train Loss: 55.7631, RMSE: 12.96 - Val Loss: 152.5389, RMSE: 25.37 - LR: 4.63e-04
+2025-12-10 17:33:07.324 | INFO     | safer_v3.core.trainer | Epoch 38/100 (75.6s) - Train Loss: 55.4963, RMSE: 12.95 - Val Loss: 129.8921, RMSE: 24.54 - LR: 4.52e-04
+2025-12-10 17:34:22.963 | INFO     | safer_v3.core.trainer | Epoch 39/100 (75.6s) - Train Loss: 51.9687, RMSE: 12.34 - Val Loss: 107.8541, RMSE: 21.60 - LR: 4.40e-04
+2025-12-10 17:35:38.626 | INFO     | safer_v3.core.trainer | Epoch 40/100 (75.7s) - Train Loss: 53.1878, RMSE: 12.50 - Val Loss: 145.2179, RMSE: 25.65 - LR: 4.27e-04
+2025-12-10 17:36:54.279 | INFO     | safer_v3.core.trainer | Epoch 41/100 (75.6s) - Train Loss: 50.3430, RMSE: 12.04 - Val Loss: 140.7737, RMSE: 25.47 - LR: 4.13e-04
+2025-12-10 17:38:09.941 | INFO     | safer_v3.core.trainer | Epoch 42/100 (75.7s) - Train Loss: 49.9112, RMSE: 12.01 - Val Loss: 145.5035, RMSE: 25.85 - LR: 3.97e-04
+2025-12-10 17:39:25.590 | INFO     | safer_v3.core.trainer | Epoch 43/100 (75.6s) - Train Loss: 49.8842, RMSE: 12.02 - Val Loss: 107.9268, RMSE: 22.25 - LR: 3.81e-04

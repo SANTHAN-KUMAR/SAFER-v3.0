@@ -103,7 +103,7 @@ def parse_args() -> argparse.Namespace:
         help='Expansion factor for inner dimension'
     )
     parser.add_argument(
-        '--dropout', type=float, default=0.1,
+        '--dropout', type=float, default=0.3,
         help='Dropout rate'
     )
     
@@ -113,24 +113,33 @@ def parse_args() -> argparse.Namespace:
         help='Maximum training epochs'
     )
     parser.add_argument(
-        '--batch_size', type=int, default=64,
-        help='Training batch size'
+        '--batch_size', type=int, default=128,
+        help='Training batch size (128 balances speed and generalization)'
     )
     parser.add_argument(
-        '--lr', type=float, default=1e-3,
+        '--lr', type=float, default=5e-4,
         help='Initial learning rate'
     )
     parser.add_argument(
-        '--weight_decay', type=float, default=1e-4,
+        '--weight_decay', type=float, default=1e-3,
         help='Weight decay (L2 regularization)'
     )
     parser.add_argument(
-        '--patience', type=int, default=15,
+        '--patience', type=int, default=50,
         help='Early stopping patience'
     )
     parser.add_argument(
         '--grad_clip', type=float, default=1.0,
         help='Gradient clipping norm'
+    )
+    parser.add_argument(
+        '--noise_std', type=float, default=0.1,
+        help='Noise std for data augmentation'
+    )
+    parser.add_argument(
+        '--scheduler', type=str, default='plateau',
+        choices=['cosine', 'onecycle', 'plateau', 'none'],
+        help='LR scheduler type (plateau recommended for stability)'
     )
     parser.add_argument(
         '--use_amp', action='store_true',
@@ -173,7 +182,7 @@ def parse_args() -> argparse.Namespace:
         help='Device to use (auto, cpu, cuda, cuda:0, etc.)'
     )
     parser.add_argument(
-        '--num_workers', type=int, default=4,
+        '--num_workers', type=int, default=8,
         help='Number of data loading workers'
     )
     
@@ -252,6 +261,7 @@ def train_single_model(
         gradient_clip=args.grad_clip,
         use_amp=args.use_amp,
         device=device.type,
+        scheduler_type=args.scheduler,  # Use plateau scheduler for stability
         tensorboard_dir=None,  # Disable TensorBoard due to compatibility issues
     )
     

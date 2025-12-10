@@ -642,6 +642,16 @@ class Trainer:
                 anneal_strategy='cos',
                 final_div_factor=self.config.learning_rate / self.config.min_lr,
             )
+        elif self.config.scheduler_type == 'plateau':
+            # ReduceLROnPlateau - reduces LR when validation stops improving
+            from torch.optim.lr_scheduler import ReduceLROnPlateau
+            self.scheduler = ReduceLROnPlateau(
+                self.optimizer,
+                mode='min',
+                factor=0.5,
+                patience=5,
+                min_lr=self.config.min_lr,
+            )
         else:
             self.scheduler = None
     
@@ -699,8 +709,8 @@ class Trainer:
                 
                 self.optimizer.step()
             
-            # Update scheduler
-            if self.scheduler is not None:
+            # Update scheduler (except ReduceLROnPlateau which steps after validation)
+            if self.scheduler is not None and self.config.scheduler_type != 'plateau':
                 self.scheduler.step()
             
             total_loss += loss.item()
@@ -851,6 +861,10 @@ class Trainer:
             if self.early_stopping(val_metrics['rmse']):
                 logger.info(f"Early stopping triggered at epoch {epoch + 1}")
                 break
+            
+            # Step ReduceLROnPlateau scheduler with validation metric
+            if self.scheduler is not None and self.config.scheduler_type == 'plateau':
+                self.scheduler.step(val_metrics['rmse'])
         
         total_time = time.time() - start_time
         logger.info(f"Training completed in {total_time / 60:.1f} minutes")

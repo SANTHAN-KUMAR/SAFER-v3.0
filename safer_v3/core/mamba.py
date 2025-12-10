@@ -253,10 +253,11 @@ class MambaRULPredictor(nn.Module):
         n_layers: int = 4,
         d_conv: int = 4,
         expand: int = 2,
-        dropout: float = 0.1,
+        dropout: float = 0.4,
         max_rul: int = 125,
         use_jit: bool = True,
         dt_rank: Union[int, str] = "auto",
+        use_pooling: bool = False,
     ):
         """Initialize MambaRULPredictor.
         
@@ -271,6 +272,7 @@ class MambaRULPredictor(nn.Module):
             max_rul: Maximum RUL value for capping
             use_jit: Enable JIT compilation for inference
             dt_rank: Rank of dt projection
+            use_pooling: Whether to use mean+last pooling (vs last only)
         """
         super().__init__()
         
@@ -280,9 +282,11 @@ class MambaRULPredictor(nn.Module):
         self.n_layers = n_layers
         self.max_rul = max_rul
         self.use_jit = use_jit
+        self.use_pooling = use_pooling
         
-        # Input projection
+        # Input projection with normalization
         self.input_proj = nn.Linear(d_input, d_model)
+        self.input_norm = nn.LayerNorm(d_model)  # Added for training stability
         
         # Mamba blocks
         self.layers = nn.ModuleList([
@@ -300,8 +304,15 @@ class MambaRULPredictor(nn.Module):
         # Final normalization
         self.final_norm = RMSNorm(d_model)
         
-        # Output projection for RUL prediction
+        # Pooling dimension (mean + last concatenated if use_pooling)
+        pool_dim = d_model * 2 if use_pooling else d_model
+        
+        # Enhanced output projection for RUL prediction
+        # Deeper MLP with residual-like structure for better expressivity
         self.output_proj = nn.Sequential(
+            nn.Linear(pool_dim, d_model),
+            nn.GELU(),
+            nn.Dropout(dropout),
             nn.Linear(d_model, d_model // 2),
             nn.GELU(),
             nn.Dropout(dropout),
@@ -352,8 +363,9 @@ class MambaRULPredictor(nn.Module):
         """
         batch_size, seq_len, _ = x.shape
         
-        # Input projection
+        # Input projection with normalization
         x = self.input_proj(x)  # (batch, length, d_model)
+        x = self.input_norm(x)  # Added normalization for stability
         
         # Process through Mamba blocks
         for layer in self.layers:
@@ -363,12 +375,20 @@ class MambaRULPredictor(nn.Module):
         x = self.final_norm(x)  # (batch, length, d_model)
         
         if return_sequence:
-            # Predict RUL for all timesteps
-            rul = self.output_proj(x)  # (batch, length, 1)
+            # Predict RUL for all timesteps (no pooling for sequence output)
+            # Need to handle pooling differently for sequence output
+            rul = self.output_proj(
+                torch.cat([x, x], dim=-1) if self.use_pooling else x
+            )  # (batch, length, 1)
         else:
-            # Only use last timestep for final prediction
+            # Sequence pooling: combine mean and last timestep
             x_last = x[:, -1, :]  # (batch, d_model)
-            rul = self.output_proj(x_last)  # (batch, 1)
+            if self.use_pooling:
+                x_mean = x.mean(dim=1)  # (batch, d_model)
+                x_pooled = torch.cat([x_mean, x_last], dim=-1)  # (batch, 2*d_model)
+            else:
+                x_pooled = x_last
+            rul = self.output_proj(x_pooled)  # (batch, 1)
         
         # Apply RUL capping (ReLU ensures non-negative, clamp ensures max)
         rul = torch.clamp(F.relu(rul), max=self.max_rul)
