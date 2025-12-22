@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAFER v3.0 | Alert Monitoring Engine</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar glass">
+            <div class="logo">
+                <div class="logo-icon">S</div>
+                <h1>SAFER v3.0</h1>
+            </div>
+
+            <div class="menu">
+                <div class="menu-item active" data-tab="dashboard">
+                    <span class="icon">📊</span>
+                    <span>Dashboard</span>
+                </div>
+                <div class="menu-item" data-tab="fleet">
+                    <span class="icon">✈️</span>
+                    <span>Fleet View</span>
+                </div>
+                <div class="menu-item" data-tab="settings">
+                    <span class="icon">⚙️</span>
+                    <span>Settings</span>
+                </div>
+            </div>
+
+            <div class="status-card">
+                <h3>System Status</h3>
+                <div class="status-indicator online">
+                    <span class="dot"></span>
+                    <span>Online</span>
+                </div>
+                <p>Engine Sim: <span id="sim-status">Running</span></p>
+
+                <div class="sim-controls">
+                    <button id="btn-pause" title="Pause Simulation">⏸</button>
+                    <button id="btn-resume" title="Resume Simulation" disabled>▶</button>
+                    <button id="btn-reset" title="Reset Simulation">⟳</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content" id="view-dashboard">
+            <!-- Header -->
+            <header class="header glass">
+                <div class="breadcrumb">
+                    <span>Mission Control</span> / <span class="active">Engine Data Stream</span>
+                </div>
+                <div class="user-profile">
+                    <span>Pilot Interface</span>
+                    <div class="avatar">P</div>
+                </div>
+            </header>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+
+                <!-- RUL Prediction Card -->
+                <div class="card rul-card glass">
+                    <div class="card-header">
+                        <h2>RUL Prediction</h2>
+                        <span class="live-badge">LIVE</span>
+                    </div>
+                    <div class="rul-display">
+                        <div class="rul-value" id="current-rul">--</div>
+                        <div class="rul-unit">Cycles Remaining</div>
+                    </div>
+                    <div class="rul-breakdown">
+                        <div class="breakdown-item">
+                            <span class="label">Simplex State</span>
+                            <span class="value" id="simplex-state">--</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="label">Baseline</span>
+                            <span class="value" id="baseline-rul">--</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="label">Complex</span>
+                            <span class="value" id="complex-rul">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Model Accuracy Card -->
+                <div class="card accuracy-card glass">
+                    <div class="card-header">
+                        <h2>Model Accuracy</h2>
+                        <span class="badge" id="accuracy-status">Good</span>
+                    </div>
+                    <div class="accuracy-display">
+                        <div class="error-value" id="rul-error">--</div>
+                        <div class="error-label">Cycle Error</div>
+                    </div>
+                    <div class="accuracy-details">
+                        <div class="detail-item">
+                            <span>True RUL</span>
+                            <span id="true-rul">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alert Panel -->
+                <div class="card alert-card glass">
+                    <div class="card-header">
+                        <h2>System Alerts</h2>
+                        <span class="badge" id="alert-count">0</span>
+                    </div>
+                    <div class="alert-list" id="alert-list">
+                        <!-- Alerts will be injected here -->
+                        <div class="empty-state">No active alerts</div>
+                    </div>
+                </div>
+
+                <!-- Info Card -->
+                <div class="card info-card glass">
+                    <div class="info-item">
+                        <span class="label">Current Cycle</span>
+                        <span class="value lg" id="current-cycle">--</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Engine ID</span>
+                        <span class="value">FD001-001</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Dataset</span>
+                        <span class="value">C-MAPSS</span>
+                    </div>
+                </div>
+
+                <!-- Sensor Telemetry -->
+                <div class="card chart-card glass">
+                    <div class="card-header">
+                        <h2>Sensor Telemetry</h2>
+                        <div class="chart-controls">
+                            <button class="active" data-sensors="1-4">Sensors 1-4</button>
+                            <button data-sensors="5-8">Sensors 5-8</button>
+                            <button data-sensors="9-14">Sensors 9-14</button>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="sensorChart"></canvas>
+                    </div>
+                </div>
+
+
+            </div>
+        </main>
+
+        <!-- Fleet View Placeholder -->
+        <main class="main-content hidden" id="view-fleet">
+            <header class="header glass">
+                <div class="breadcrumb">
+                    <span>Mission Control</span> / <span class="active">Fleet Overview</span>
+                </div>
+            </header>
+            <div class="placeholder-content">
+                <h2>Fleet View Under Construction</h2>
+            </div>
+        </main>
+
+        <!-- Settings View Placeholder -->
+        <main class="main-content hidden" id="view-settings">
+            <header class="header glass">
+                <div class="breadcrumb">
+                    <span>Mission Control</span> / <span class="active">Settings</span>
+                </div>
+            </header>
+            <div class="placeholder-content">
+                <h2>Settings Panel Under Construction</h2>
+            </div>
+        </main>
+    </div>
+    <script src="static/app.js"></script>
+</body>
+
+</html>
