@@ -53,6 +53,56 @@ SAFER v3.0 implements a novel approach to Remaining Useful Life (RUL) prediction
 - **Safety Assurance**: Simplex architecture for runtime switching
 - **Lock-Free Communication**: High-performance shared memory transport
 
+
+
+## Mamba model training block :
+
+In the **SAFER v3.0** repository, training the Mamba model involves a **Selective State Space Model (SSM)** architecture designed for time-series Remaining Useful Life (RUL) prediction.
+
+### 1. Training Summary
+Training is performed using a supervised learning approach on the **C-MAPSS** dataset. The model learns to map a sequence of sensor readings (typically 14 prognostic sensors) to a scalar RUL value. 
+
+*   **Parallelization:** Unlike standard RNNs, Mamba is trained efficiently using a **parallel associative scan**. This allows the model to process long sequences in $O(L)$ time while maintaining the recurrent state benefits.
+*   **Loss Function:** The repository uses **Mean Squared Error (MSE)** loss:
+    $$\mathcal{L} = \frac{1}{N} \sum_{i=1}^{N} (\hat{y}_i - y_i)^2$$
+    where $\hat{y}$ is the predicted RUL and $y$ is the ground truth.
+*   **Optimization:** Training utilizes the **Adam optimizer** with features like **Early Stopping** (based on validation RMSE) and **Learning Rate Scheduling** (ReduceLROnPlateau).
+*   **Selective Mechanism:** The "selection" happens during the forward pass where the model parameters ($\Delta, B, C$) are computed as functions of the input $x_t$, allowing the model to "focus" on or "forget" specific parts of the sequence.
+
+---
+
+### 2. Core Mamba Equations
+The training and inference are governed by the following mathematical transformations (implemented in [`safer_v3/core/ssm_ops.py`](https://github.com/SANTHAN-KUMAR/SAFER-v3.0/blob/main/safer_v3/core/ssm_ops.py)):
+
+#### A. Continuous-Time SSM
+The underlying system is modeled as a linear differential equation:
+$$h'(t) = \mathbf{A}h(t) + \mathbf{B}x(t)$$
+$$y(t) = \mathbf{C}h(t)$$
+
+#### B. Discretization (Zero-Order Hold)
+To process discrete time steps $\Delta$, the continuous parameters $(\mathbf{A, B})$ are discretized into $(\mathbf{\bar{A}, \bar{B}})$:
+$$\mathbf{\bar{A}} = \exp(\Delta \mathbf{A})$$
+$$\mathbf{\bar{B}} = (\Delta \mathbf{A})^{-1}(\exp(\Delta \mathbf{A}) - \mathbf{I}) \cdot (\Delta \mathbf{B})$$
+*Note: For diagonal $\mathbf{A}$, this is simplified in code to $\mathbf{\bar{B}} \approx \Delta \mathbf{B}$.*
+
+#### C. Selective Mechanism (Input-Dependent)
+The core "Selective" part of Mamba makes $\Delta, \mathbf{B},$ and $\mathbf{C}$ functions of the input $x_t$:
+$$\Delta_t = \text{Softplus}(\text{Linear}_\Delta(x_t))$$
+$$\mathbf{B}_t = \text{Linear}_B(x_t)$$
+$$\mathbf{C}_t = \text{Linear}_C(x_t)$$
+
+#### D. Recurrent Computation
+During inference (or during the scan in training), the state is updated as:
+$$h_t = \mathbf{\bar{A}}_t h_{t-1} + \mathbf{\bar{B}}_t x_t$$
+$$y_t = \mathbf{C}_t h_t$$
+
+### 3. Architecture Block
+As seen in [`safer_v3/core/mamba.py`](https://github.com/SANTHAN-KUMAR/SAFER-v3.0/blob/main/safer_v3/core/mamba.py), the training loop passes data through a `MambaBlock`:
+1.  **Normalization:** `RMSNorm` is applied to the input: $y = \frac{x}{\text{RMS}(x)} \cdot \gamma$
+2.  **SSM Operation:** The selective SSM processes the normalized sequence.
+3.  **Residual Connection:** $x_{out} = x_{in} + \text{SSM}(\text{RMSNorm}(x_{in}))$
+
+
 ## Installation
 
 ```bash
@@ -296,3 +346,4 @@ If you use SAFER v3.0 in your research, please cite:
 - NASA Prognostics Center of Excellence for C-MAPSS dataset
 - Mamba architecture from "Mamba: Linear-Time Sequence Modeling with Selective State Spaces"
 - SINDy methodology from "Discovering governing equations from data"
+
