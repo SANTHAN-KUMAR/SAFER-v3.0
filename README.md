@@ -103,6 +103,52 @@ As seen in [`safer_v3/core/mamba.py`](https://github.com/SANTHAN-KUMAR/SAFER-v3.
 3.  **Residual Connection:** $x_{out} = x_{in} + \text{SSM}(\text{RMSNorm}(x_{in}))$
 
 
+
+## Physics model workflow :
+
+In **SAFER v3.0**, the physics model (called **LPV-SINDy**) is trained to "discover" the laws of math and physics that govern an engine. It doesn't just memorize patterns; it creates an actual mathematical formula for the engine's behavior.
+
+Here is the simple summary of how it is trained and used:
+
+### 1. How it is Trained (The Discovery Phase)
+
+The goal of training is to find the simplest equation that describes how sensor values (like Pressure or Temperature) change over time.
+
+*   **The "Math Menu" (Library):** The model is given a "menu" of possible mathematical terms, such as $x$ (linear), $x^2$ (curves), and $x \cdot y$ (interactions).
+*   **The "Cleaning" (Integration):** Because sensor data is noisy, the model doesn't look at instant changes. It looks at the **total change** over a small window of time (integration). This "smooths out" the jitters.
+*   **The "Pruning" (Sparse Regression):** The model tries to fit the data using all the terms in the menu. If a term (like $x^3$) isn't helpful, its coefficient is set to **zero** and it's thrown away. This leaves only the "true" physics.
+
+**The Training Equation:**
+$$\Delta x \approx \left( \int \Theta(x) dt \right) \cdot \xi$$
+*   $\Delta x$: The actual change in the sensor.
+*   $\int \Theta(x) dt$: The "smoothed" menu of math functions.
+*   $\xi$ (Xi): The **Coefficients** the model is trying to learn (e.g., "how much does fuel affect heat?").
+
+---
+
+### 2. How it is Used (The Monitoring Phase)
+
+Once the model has learned the coefficients ($\xi$), it uses them as a "Virtual Engine" to double-check the real engine.
+
+1.  **Prediction:** The model looks at current sensors and uses its learned equation to calculate what the *next* sensor reading **should** be.
+2.  **Comparison:** It calculates the **Residual** (the gap between the math and reality).
+3.  **Alert:** If the gap is small, the engine is following the "laws of physics." If the gap is large, something is physically wrong (like a broken blade or a leaking pipe).
+
+**The Residual Equation:**
+$$\text{Residual} = | \text{Real Sensor Change} - \text{Predicted Math Change} |$$
+
+---
+
+### Simple Example: A Fuel Leak
+*   **Learned Law:** The model knows that if you increase **Fuel Flow** by 1 unit, **Temperature** should rise by 10 degrees.
+*   **The Situation:** A fuel line develops a leak. The sensor shows high **Fuel Flow**, but the **Temperature** stays low because the fuel is spilling out instead of burning.
+*   **The Physics Check:** The model calculates: *"Math says temperature should be +10, but reality says +0."*
+*   **The Action:** The **Residual** is 10. This exceeds the safety threshold, and the system triggers an **Alert**, even if a standard AI hasn't seen this specific leak before.
+
+### Why this is better?
+By training the model this way, SAFER v3.0 doesn't just say "this looks weird." It says **"this violates the law of thermal dynamics,"** making the engine much safer and easier for engineers to trust.
+
+
 ## Installation
 
 ```bash
@@ -346,4 +392,5 @@ If you use SAFER v3.0 in your research, please cite:
 - NASA Prognostics Center of Excellence for C-MAPSS dataset
 - Mamba architecture from "Mamba: Linear-Time Sequence Modeling with Selective State Spaces"
 - SINDy methodology from "Discovering governing equations from data"
+
 
