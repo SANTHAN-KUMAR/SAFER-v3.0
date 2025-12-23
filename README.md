@@ -34,6 +34,9 @@ SAFER v3.0 implements a novel approach to Remaining Useful Life (RUL) prediction
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
+<img width="2816" height="1536" alt="workflow diagram" src="https://github.com/user-attachments/assets/83a17330-5295-4e44-8379-bf7acc837453" />
+
+
 ### Key Components
 
 1. **Mamba RUL Predictor** (DAL E): State-space model for high-accuracy prediction
@@ -56,6 +59,9 @@ SAFER v3.0 implements a novel approach to Remaining Useful Life (RUL) prediction
 
 
 ## Mamba model training block :
+
+<img width="2816" height="1536" alt="mamba model" src="https://github.com/user-attachments/assets/0f9cfc54-b00c-4060-b0e8-755e32a9d4e9" />
+
 
 In the **SAFER v3.0** repository, training the Mamba model involves a **Selective State Space Model (SSM)** architecture designed for time-series Remaining Useful Life (RUL) prediction.
 
@@ -105,6 +111,8 @@ As seen in [`safer_v3/core/mamba.py`](https://github.com/SANTHAN-KUMAR/SAFER-v3.
 
 
 ## Physics model workflow :
+
+<img width="2816" height="1536" alt="physics model img" src="https://github.com/user-attachments/assets/47b89f93-bc37-417d-9d25-20187723b793" />
 
 In **SAFER v3.0**, the physics model (called **LPV-SINDy**) is trained to "discover" the laws of math and physics that govern an engine. It doesn't just memorize patterns; it creates an actual mathematical formula for the engine's behavior.
 
@@ -392,5 +400,6 @@ If you use SAFER v3.0 in your research, please cite:
 - NASA Prognostics Center of Excellence for C-MAPSS dataset
 - Mamba architecture from "Mamba: Linear-Time Sequence Modeling with Selective State Spaces"
 - SINDy methodology from "Discovering governing equations from data"
+
 
 
