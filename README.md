@@ -7,30 +7,29 @@ A tri-partite architecture for aerospace turbofan engine prognostics combining d
 ## Overview
 
 SAFER v3.0 implements a novel approach to Remaining Useful Life (RUL) prediction for turbofan engines:
-
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                           SAFER v3.0 Architecture                        │
+│                           SAFER v3.0 Architecture                       │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
-│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐              │
-│  │    Mamba     │    │   LPV-SINDy  │    │   Baseline   │              │
-│  │  Predictor   │    │   Physics    │    │  Predictor   │              │
-│  │   (DAL E)    │    │   Monitor    │    │   (DAL C)    │              │
-│  └──────┬───────┘    └──────┬───────┘    └──────┬───────┘              │
+│                                                                         │
+│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐               │
+│  │    Mamba     │    │   LPV-SINDy  │    │   Baseline   │               │
+│  │  Predictor   │    │   Physics    │    │  Predictor   │               │
+│  │   (DAL E)    │    │   Monitor    │    │   (DAL C)    │               │
+│  └──────┬───────┘    └──────┬───────┘    └──────┬───────┘               │
 │         │                   │                   │                       │
 │         └───────────────────┼───────────────────┘                       │
-│                             ▼                                            │
+│                             ▼                                           │
 │                   ┌─────────────────┐                                   │
-│                   │ Simplex Decision │                                   │
-│                   │     Module       │                                   │
+│                   │ Simplex Decision│                                  │
+│                   │     Module      │                                  │
 │                   └────────┬────────┘                                   │
-│                            ▼                                             │
+│                            ▼                                            │
 │                   ┌─────────────────┐                                   │
 │                   │  Conformal UQ   │                                   │
 │                   │  Alert Manager  │                                   │
 │                   └─────────────────┘                                   │
-│                                                                          │
+│                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -400,6 +399,7 @@ If you use SAFER v3.0 in your research, please cite:
 - NASA Prognostics Center of Excellence for C-MAPSS dataset
 - Mamba architecture from "Mamba: Linear-Time Sequence Modeling with Selective State Spaces"
 - SINDy methodology from "Discovering governing equations from data"
+
 
 
 
